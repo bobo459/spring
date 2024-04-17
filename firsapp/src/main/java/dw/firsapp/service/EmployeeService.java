@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class EmployeeService {
     // 의존성주입
     @Autowired
-    EmployeeRepository employeeRepository;
+    EmployeeRepository employeeRepository;  // employeeRepository 이 Bean 타입이다
 
     public Employee saveEmployee(Employee employee){ //employee => controller에서 던져준 데이터를 가지고 있다.
         //repository code 가 있어야 함.
