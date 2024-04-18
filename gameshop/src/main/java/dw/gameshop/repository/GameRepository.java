@@ -1,4 +1,8 @@
 package dw.gameshop.repository;
 
-public interface GameRepository {
+import dw.gameshop.model.Game;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+
+public interface GameRepository extends JpaRepository<Game, Long> {
 }
