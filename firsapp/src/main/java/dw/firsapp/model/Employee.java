@@ -3,8 +3,8 @@ package dw.firsapp.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="employees")
-public class Employee {  //테이블화를 시켜줌. 밑에는 데이터
+@Table(name="employees")  //테이블명은 복수가 많기에 이름을 복수형으로 만듬
+public class Employee {  //테이블화를 시켜줌. 밑에는 데이터  =>단수형으로 만듬
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //값을 생성할건데 어떤 식으로 생성할것인지?
     //id는 빅인트에 들어간다

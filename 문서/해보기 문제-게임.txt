@@ -1,0 +1,17 @@
+프로젝트명 :  gameshop				- spring initializr 에서 Artifact 칸에 사용
+엔티티명 :  Game					- 인텔리제이 에서 model 에 사용
+테이블명 : games					- 인텔리제이 에서 model 에 사용
+RESTful API
+GET	/products	getAllGames
+GET	/products/{id}	getGameByld
+GET	/products/{id}	updateGameByld
+Game의 필드설정					- 인텔리제이 에서 model 에 생성자 만들때 사용
+id	long	
+titile	String	@Cloumn(length =100)
+genre	String	@Cloumn(length =100)
+price	int	
+image	String	@Cloumn(length =65535)
+text	String	@Cloumn(length =65535)
+
+
+

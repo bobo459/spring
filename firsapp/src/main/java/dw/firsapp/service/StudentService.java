@@ -1,7 +1,10 @@
 package dw.firsapp.service;
 
+import dw.firsapp.model.Employee;
 import dw.firsapp.model.Student;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service  // 있어야 controller와 대화가 가능하다
 public class StudentService {
@@ -9,4 +12,5 @@ public class StudentService {
         System.out.println(student.getFirstName() + " " + student.getLastName());
         return 100;
     }
+
 }
