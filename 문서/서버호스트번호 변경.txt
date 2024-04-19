@@ -1,0 +1,5 @@
+server.port = 8081
+
+
+
+=> application.properties 에 붙여주면 서버경로를 변경해줄수 있다.
