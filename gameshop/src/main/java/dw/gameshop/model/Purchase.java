@@ -14,12 +14,12 @@ import java.time.LocalDateTime;
 @Table(name = "purchase")
 public class Purchase {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  //마리아를 사용할때 사용하는 문구. 양식 외우기
     private long id;
 
-    @ManyToOne   //@ManyToOne :  구매를 한 것. 유저의객체가  들어있음
-    @JoinColumn(name = "game_id") //한글가능
-    private Game game;  //한글쓰지말구  - 객체를 던저줘야 객체로 받음
+    @ManyToOne   //@ManyToOne :  구매를 한 것. 유저의객체가  들어있음 =>다대일 관계를 표현
+    @JoinColumn(name = "game_id") //한글가능 => 데이터베이스 컬럼명 sql에서만 사용한다.(자바코드에서는 사용할 일이 없다.)
+    private Game game;  //한글쓰지말구  - 객체를 던저줘야 객체로 받음 (자바에서만 사용하는 이름이다)
 
     @JoinColumn(name = "user_id")
     @ManyToOne
