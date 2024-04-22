@@ -18,6 +18,8 @@ public class User {
     @Column(name = "email", length = 255, nullable = false)
     private String email;
 
+    //필드를 만들어서 가입일을 들어가게 만들수도 있다. 생성시간을 표시가능
+
     public User() {
     }
 

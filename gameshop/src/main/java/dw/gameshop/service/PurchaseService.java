@@ -9,6 +9,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,6 +22,8 @@ public class PurchaseService {
     UserRepository userRepository;
 
     public Purchase savePurchase(Purchase purchase){
+        //구매확인 바로 직전, 현재시간을 저장함
+        purchase.setPurchaseTime(LocalDateTime.now());
         return purchaseRepository.save(purchase);
 
     }
@@ -36,4 +39,16 @@ public class PurchaseService {
         }
         return purchaseRepository.findByUser(userOptional.get());  //ID아니고 필드 중에 하나이다. Repository에 만들어 줘야 사용가능
     }
+
+    //유저 이름으로 구매한 게임 찾기
+    public List<Purchase> getPurchaseListByUserName(String userName){
+        Optional<User> userOptional = userRepository.findByUserName(userName);  //findByUserName 내가 임의로 만든거라 없어서 userRepository에서 만들어줘야함
+        if (userOptional.isEmpty()){
+            throw new ResourceNotFoundException("User", "Name", userName);
+        }
+        return purchaseRepository.findByUser(userOptional.get()); //findByUser 유저객체로만 찾을수 있다.() 들어가는 건 반드시 객체여야한다.
+    }
+
+
+
 }

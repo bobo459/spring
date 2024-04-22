@@ -18,7 +18,7 @@ public class GameController {
         this.gameService = gameService;
     }
 
-    @GetMapping("/products")
+    @GetMapping("/products")  //서비스에서 작성하였으면 주소의 이름을 뭐로 할까 정도만 해주면 된다.
     public ResponseEntity<List<Game>> getAllGames(){
         return new ResponseEntity<>(gameService.getAllGame(),
                 HttpStatus.OK);
@@ -41,5 +41,21 @@ public class GameController {
         return new ResponseEntity<>(gameService.saveUser(user),
                 HttpStatus.OK);
     }
+
+    @GetMapping("/products/maxprice")
+    public ResponseEntity<Game> getGameWithMaxPrice(){
+    return new ResponseEntity<>(gameService.getGameWithMaxPrice(),
+        HttpStatus.OK);
+    }
+
+    @GetMapping("/products/maxpricetop3")
+    public ResponseEntity<List<Game>> getGameWithMaxPriceTop3(){
+        return new ResponseEntity<>(gameService.getGameWithMaxPriceTop3(),
+                HttpStatus.OK);
+    }
+
+
+
+
 
 }
