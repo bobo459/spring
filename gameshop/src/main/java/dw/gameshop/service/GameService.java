@@ -68,7 +68,7 @@ public class GameService {
 
 
 
-/*        //람다식이 아닌 일반 자바코드 사용 예
+/*        //1. 람다식이 아닌 일반 자바코드 사용 예
         if (games.size() <= ){  //예외를 넣어줄려면
             throw new ResourceNotFoundException("Max Price"," ", " ");
         }
@@ -81,14 +81,18 @@ public class GameService {
         }//앞뒤를 계속비교해서 이동시킨다.
         return max;*/
 
-        //람다식 사용 예
+   /*     //2. 람다식 사용 예
         return games.stream().sorted(Comparator.comparingInt(Game::getPrice)  //((Game g)-> g.getPrice()) 을 (Game::getPrice) 식으로도 사용가능
                 .reversed())
                 .findFirst()
                 .orElseThrow(() -> new ResourceNotFoundException("Max Price"," ", " ")); //예외
         //sort : 보이드형,리턴이 없이 결과값이 없는것
         //sorted : 메소드의 흐림이 계속해서 이어진다. 항상 stream
-        //게임을 스트림화(연달아 정렬) 한다. 트라이캐치문과 비슷하다.
+        //게임을 스트림화(연달아 정렬) 한다. 트라이캐치문과 비슷하다. */
+
+        //3. JPQL 사용 예
+        return gameRepository.getGameWithMaxPrice();
+
     }
 
     //제일 비싼 게임 TOP3 =>정렬이 되어야 한다.
@@ -107,11 +111,14 @@ public class GameService {
         newGames.add(games.get(2));
         return newGames;      */
 
-        //람다식 사용 예
+      /*  //람다식 사용 예
         return games.stream()
                 .sorted(Comparator.comparingInt(Game::getPrice).reversed())
                 .limit(3)
                 .collect(Collectors.toList()); //3개를 현재 스트림상태인데, 리스트를 만들기 위해서는.collect(Collectors.toList())을 사용한다. Collectors.toList()대신에 set으로 사용할수도 있다.
-
+*/
+        //JPQL 사용 예
+        return gameRepository.getGameWithMaxPriceTop3()
+                .stream().limit(3).collect(Collectors.toList());
     }
 }

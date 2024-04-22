@@ -3,7 +3,7 @@ package dw.gameshop.model;
 import jakarta.persistence.*;
 
 @Entity  //엔티티를 통해서 테이블을 만든다.
-@Table(name = "games")
+@Table(name = "games") //테이블명이 적어준다.
 public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
