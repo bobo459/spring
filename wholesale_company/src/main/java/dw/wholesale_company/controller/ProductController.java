@@ -24,4 +24,9 @@ public class ProductController {
         return new ResponseEntity<>(productService.getProductAll(),
                 HttpStatus.OK);
     }
+    @GetMapping("/product/list")
+    public ResponseEntity<List<Product>> getProductListByInventory(){
+        return new ResponseEntity<>(productService.getProductListByInventory(),
+                HttpStatus.OK);
+    }
 }
