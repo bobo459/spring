@@ -20,8 +20,8 @@ public class OrderDetailController {
         this.orderDetailService = orderDetailService;
     }
     @GetMapping("/orderdetails")
-    public ResponseEntity<List<OrderDetail>> getOrderDertailAll() {
-        return new ResponseEntity<>(orderDetailService.getOrderDertailAll(),
+    public ResponseEntity<List<OrderDetail>> getOrderDetailAll() {
+        return new ResponseEntity<>(orderDetailService.getOrderDetailAll(),
                 HttpStatus.OK);
     }
 }

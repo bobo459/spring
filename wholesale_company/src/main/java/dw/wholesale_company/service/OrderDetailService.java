@@ -1,6 +1,7 @@
 package dw.wholesale_company.service;
 
 import dw.wholesale_company.model.Order;
+import dw.wholesale_company.model.OrderDetail;
 import dw.wholesale_company.repository.OrderDetailRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ public class OrderDetailService {
         this.orderDetailRepository = orderDetailRepository;
     }
 
-    public List<Order> getOrderDertailAll() {
+    public List<OrderDetail> getOrderDetailAll(){
         return orderDetailRepository.findAll();
     }
 }
