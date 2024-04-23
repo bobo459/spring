@@ -21,7 +21,7 @@ public class OrderService {
     public List<Order> getOrderAll() {
         return orderRepository.findAll();
     }
-    
+/*
 //1. 주문일이 2021년 5월 1일 이후인 주문 정보 얻기
     public List<Order> getOrderListByOrderDate(){
         List<Order> orderList = orderRepository.findAll();
@@ -29,5 +29,5 @@ public class OrderService {
         for (int i = 0; i < ; i++) {
             
         }
-    }
+    }*/
 }
