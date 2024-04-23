@@ -4,6 +4,7 @@ import dw.gameshop.exception.ResourceNotFoundException;
 import dw.gameshop.model.Game;
 import dw.gameshop.model.User;
 import dw.gameshop.repository.GameRepository;
+import dw.gameshop.repository.ReviewRepository;
 import dw.gameshop.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,8 +19,8 @@ import java.util.stream.Collectors;
 public class GameService {
     GameRepository gameRepository;  //의존성주입을 잊지말구 하기
     UserRepository userRepository;
-
-    public GameService(GameRepository gameRepository, UserRepository userRepository) {
+@Autowired
+    public GameService(GameRepository gameRepository, UserRepository userRepository, ReviewRepository reviewRepository) {
         this.gameRepository = gameRepository;
         this.userRepository = userRepository;
     }
