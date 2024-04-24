@@ -6,10 +6,7 @@ import dw.wholesale_company.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -28,24 +25,25 @@ public class ProductController {
         return new ResponseEntity<>(productService.getProductAll(),
                 HttpStatus.OK);
     }
-/*    @GetMapping("/product/list")
-    public ResponseEntity<List<Product>> getProductListByInventory(){
-        return new ResponseEntity<>(productService.getProductListByInventory(),
-                HttpStatus.OK);
-    }*/
+
+    /*    @GetMapping("/product/list")
+        public ResponseEntity<List<Product>> getProductListByInventory(){
+            return new ResponseEntity<>(productService.getProductListByInventory(),
+                    HttpStatus.OK);
+        }*/
     @GetMapping("/products/inventory/under/{num}")
     public ResponseEntity<List<Product>> getProductByInventoryUnder(@PathVariable int num) {
         return new ResponseEntity<>(productService.getProductByInventoryUnder(num),
                 HttpStatus.OK);
     }
 
-/*    @GetMapping("/products/name/{name}")
-    public ResponseEntity<List<Product>> getProductJuce(@PathVariable String name){
-        return new ResponseEntity<>(productService.getProductJuce(name),
-                HttpStatus.OK);
-    }*/
+    /*    @GetMapping("/products/name/{name}")
+        public ResponseEntity<List<Product>> getProductJuce(@PathVariable String name){
+            return new ResponseEntity<>(productService.getProductJuce(name),
+                    HttpStatus.OK);
+        }*/
     @GetMapping("/products/{productName}")
-    public ResponseEntity<List<Product>> getProductByProductName(@PathVariable String productName){
+    public ResponseEntity<List<Product>> getProductByProductName(@PathVariable String productName) {
         return new ResponseEntity<>(productService.getProductByProductName(productName),
                 HttpStatus.OK);
     }
@@ -60,4 +58,11 @@ public class ProductController {
                 HttpStatus.OK);
     }
 
+
+    //4.제품 제품번호가 1,2,4,7,11,20인 제품의 모든 정보를 보이시오.
+    @GetMapping("/products/idlist")
+    public ResponseEntity<List<Product>> getProductByIdWithList(@RequestBody List<Long> idList) {
+        return new ResponseEntity<>(productService.getProductByIdWithList(idList),
+                HttpStatus.OK);
+    }
 }

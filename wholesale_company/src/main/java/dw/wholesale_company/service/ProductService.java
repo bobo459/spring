@@ -7,7 +7,9 @@ import dw.wholesale_company.repository.ProductRepository;
 import org.aspectj.weaver.loadtime.definition.LightXMLParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
+import javax.print.attribute.standard.OrientationRequested;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,12 +18,13 @@ import java.util.stream.Collectors;
 @Service
 public class ProductService {
     ProductRepository productRepository;
+
     @Autowired
     public ProductService(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
 
-    public List<Product> getProductAll(){
+    public List<Product> getProductAll() {
         return productRepository.findAll();
     }
 
@@ -38,7 +41,7 @@ public class ProductService {
     }*/
     public List<Product> getProductByInventoryUnder(int num) {
         List<Product> productList = productRepository.findAll();
-        return productList.stream().filter(p->p.getInventory() < num)  //filter 바구니에 담는다
+        return productList.stream().filter(p -> p.getInventory() < num)  //filter 바구니에 담는다
                 .collect(Collectors.toList());
     }
 
@@ -72,18 +75,29 @@ public class ProductService {
                 .collect(Collectors.toList());
     }
 
-//    4.제품 제품번호가 1,2,4,7,11,20인 제품의 모든 정보를 보이시오. (배열로 여러개의 제품을 보이게하고싶다.)
+    //    4.제품 제품번호가 1,2,4,7,11,20인 제품의 모든 정보를 보이시오. (배열로 여러개의 제품을 보이게하고싶다.)
 //    포스트맨에서 배열형태로 요청함
 //    본문에 [1,2,4,7,11,20] 형태로 요청 (for문사용)
-    public List<Product> getProductByproductId(List<Integer> projectId){
+    public List<Product> getProductByIdWithList(@RequestBody List<Long> idList) {
         List<Product> productList = productRepository.findAll();
-        List<Product> productList1 = new ArrayList<>();
-        for (int i = 0; i < productList.size(); i++) {
-            if (productList.get(i).getProductId(Integer)){
-
+        List<Product> newProducts = new ArrayList<>();
+   /*     for (int i = 0; i < productList.size(); i++) {
+            for (int j = 0; j < idList.size(); j++) {
+                if (productList.get(i).getProductId() == idList.get(j)) {
+                    newProducts.add(productList.get(i));
+                }
             }
-        }
-
+        }return newProducts;*/
+        return productList.stream().filter(product -> idList.contains(product.getProductId())) //contains:자체가 참거짓을 나타낸다
+                .collect(Collectors.toList());
     }
 
+    //5. 제품 재고금액이 높은 상위 10개 제품(shot가 편하겠죠?)
+    //(재고금액 = 단가(unitPrice) * 재고수량(imventory))
+    public List<Product> getProductByLanKing(int unitPrice, int inventory){
+        List<Product>  productList = productRepository.findAll();
+        return productList.stream().filter(
+                product -> product.getUnitPrice() =unitPrice
+
+    }
 }
