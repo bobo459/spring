@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @Setter
 @Getter
 
-@Entity
+@Entity  // 외래키를 가지고 있음 (부서번호)
 @Table(name = "사원")
 public class Employee {
     @Id
@@ -42,7 +42,7 @@ public class Employee {
     @Column(name="상사번호")
     private String managerId;
 
-    @ManyToOne
+    @ManyToOne  //외래키를 사용하겠다는 의미.데이터베이스에 키 값에 mul이라고 써있다
     @JoinColumn(name="부서번호")
     private Department department;
 

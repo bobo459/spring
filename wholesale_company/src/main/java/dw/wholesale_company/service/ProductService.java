@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductService {
@@ -22,8 +23,7 @@ public class ProductService {
 
 
     //2. 제품의 재고가 50개 미만인 제품 정보 얻기
-
-    public List<Product> getProductListByInventory(){
+/*    public List<Product> getProductListByInventory(){
         List<Product> productList = productRepository.findAll();
         List<Product> productList1 = new ArrayList<>();
         for (int i = 0; i < productList.size(); i++) {
@@ -31,6 +31,11 @@ public class ProductService {
                 productList1.add(productList.get(i));
             }
         }return productList1;
+    }*/
+    public List<Product> getProductByInventoryUnder(int num) {
+        List<Product> productList = productRepository.findAll();
+        return productList.stream().filter(p->p.getInventory() < num)  //filter 바구니에 담는다
+                .collect(Collectors.toList());
     }
 
 }

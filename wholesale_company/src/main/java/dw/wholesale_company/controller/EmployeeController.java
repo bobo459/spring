@@ -24,5 +24,9 @@ public class EmployeeController {
         return new ResponseEntity<>(employeeService.getEmployeeAll(),
                 HttpStatus.OK);
     }
-
+    @GetMapping("/employees/hiredate/latest")
+    public ResponseEntity<Employee> getEmployeeByHireLatest() {
+        return new ResponseEntity<>(employeeService.getEmployeeByHireLatest(),
+                HttpStatus.OK);
+    }
 }
