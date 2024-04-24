@@ -24,5 +24,9 @@ public class CustomerController {
         return new ResponseEntity<>(customerService.getCustomerAll(),
                 HttpStatus.OK);
     }
-
+/*    @GetMapping("/customers/highmilethanavg")
+    public ResponseEntity<List<Customer>> getCustomerWithHighMileThanAvg() {
+        return new ResponseEntity<>(customerService.getCustomerWithHighMileThanAvg(),
+                HttpStatus.OK);
+    }*/
 }
