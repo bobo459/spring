@@ -1,5 +1,6 @@
 package dw.wholesale_company.service;
 
+import dw.wholesale_company.model.Customer;
 import dw.wholesale_company.model.Order;
 import dw.wholesale_company.model.Product;
 import dw.wholesale_company.repository.OrderRepository;
@@ -37,4 +38,14 @@ public class OrderService {
         return orders.stream().filter(a->a.getOrderDate().compareTo(date)>0) // filter:순서가 있어야 사용가능하다.
                 .collect(Collectors.toList());  //stream : 객체타입 뭉쳐있는 자료중 하나씩 뽑아준다.
     }  //람다식 :함수형프로그래밍,절차형프로그래밍이라 한다.. 순서대로 차례로 절차적으로 작업을 한다. 리스트로 시작했으면 리스트로 끝내야한다.
+
+
+    //3.2020년 4월 9일에 주문한 고객의 모든 정보를 보이시오.
+    //    +날짜를 매개변수로 처리
+    public List<Customer> getCustomerByOrderDate(LocalDate orderDate) {
+        List<Order> orders = orderRepository.findByOrderDate(orderDate);
+        return orders.stream().map(order -> order.getCustomer())
+                .collect(Collectors.toList());
+    }
+
 }

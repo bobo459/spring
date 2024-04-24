@@ -1,5 +1,6 @@
 package dw.wholesale_company.controller;
 
+import dw.wholesale_company.model.Customer;
 import dw.wholesale_company.model.Product;
 import dw.wholesale_company.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -48,6 +50,14 @@ public class ProductController {
                 HttpStatus.OK);
     }
 
-
+    //2. 제품 단가가 5,000원 이상 10,000원 이하인 제품에는 무엇이 있는지 검색하시오.
+    //      +lowLimit 와 highLimit 으로 매수변수 처리하는 것도 구현해보세요~
     //@PathVariable 복수일때 불편한 매개변수 , 복수일때는 @RequestParam 이 편리하다. 잘사용은 안함.
+    @GetMapping("/products/price")
+    public ResponseEntity<List<Product>> getProductByPriceRange(@RequestParam int low,
+                                                                @RequestParam int high) {
+        return new ResponseEntity<>(productService.getProductByPriceRange(low, high),
+                HttpStatus.OK);
+    }
+
 }

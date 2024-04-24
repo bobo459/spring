@@ -4,6 +4,7 @@ import dw.wholesale_company.model.Department;
 import dw.wholesale_company.model.Order;
 import dw.wholesale_company.model.Product;
 import dw.wholesale_company.repository.ProductRepository;
+import org.aspectj.weaver.loadtime.definition.LightXMLParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -64,10 +65,25 @@ public class ProductService {
                 .collect(Collectors.toList());
     }*/
     //선생님 답
-    public List<Product> getProductByPriceRange( int lowPrice, int highPrice ){
+    public List<Product> getProductByPriceRange(int lowPrice, int highPrice) {
         List<Product> productList = productRepository.findAll();
-        return productList.stream().filter(product->product.getUnitPrice().)
+        return productList.stream().filter(product ->
+                        product.getUnitPrice() >= lowPrice && product.getUnitPrice() <= highPrice)
                 .collect(Collectors.toList());
+    }
+
+//    4.제품 제품번호가 1,2,4,7,11,20인 제품의 모든 정보를 보이시오. (배열로 여러개의 제품을 보이게하고싶다.)
+//    포스트맨에서 배열형태로 요청함
+//    본문에 [1,2,4,7,11,20] 형태로 요청 (for문사용)
+    public List<Product> getProductByproductId(List<Integer> projectId){
+        List<Product> productList = productRepository.findAll();
+        List<Product> productList1 = new ArrayList<>();
+        for (int i = 0; i < productList.size(); i++) {
+            if (productList.get(i).getProductId(Integer)){
+
+            }
+        }
+
     }
 
 }
