@@ -17,7 +17,7 @@ import java.util.Map;
 
 @Component
 public class MyAuthenticationEntryPoint implements AuthenticationEntryPoint {
-
+//권한실패
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response,
                          AuthenticationException authException)

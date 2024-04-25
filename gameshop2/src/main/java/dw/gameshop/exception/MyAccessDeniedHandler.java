@@ -16,9 +16,9 @@ import java.util.Map;
 
 @Component
 public class MyAccessDeniedHandler implements AccessDeniedHandler {
-
+//인증실패
     @Override
-    public void handle(HttpServletRequest request, HttpServletResponse response,
+    public void handle(HttpServletRequest request, HttpServletResponse response,  //Servlet: 아주작은 소프트웨어. 독립적임, 자바로 만들어졌다.
                        AccessDeniedException accessDeniedException)
             throws IOException, ServletException {
         // 권한이 없는 사용자가 보호된 리소스에 접근했을 때 호출됨
@@ -41,6 +41,6 @@ public class MyAccessDeniedHandler implements AccessDeniedHandler {
         // 응답 내용 출력
         PrintWriter out = response.getWriter();
         out.print(jsonResponse);
-        out.flush();
+        out.flush();   //flush:물내리기, 내보낸다는 뜻
     }
 }

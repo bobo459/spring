@@ -24,7 +24,7 @@ public class UserService {
         User user = new User(userDto.getUserId(),
                 userDto.getUserName(),
                 userDto.getUserEmail(),
-                bCryptPasswordEncoder.encode(userDto.getPassword()),
+                bCryptPasswordEncoder.encode(userDto.getPassword()),  //비번 또는 민증번호, 카드번호 등 개인정보 저장시점에 패스워드로 암호화 시켜준다.
                 LocalDateTime.now());
         return userRepository.save(user).getUserId();
     }
