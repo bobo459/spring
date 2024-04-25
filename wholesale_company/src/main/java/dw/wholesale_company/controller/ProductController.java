@@ -65,4 +65,12 @@ public class ProductController {
         return new ResponseEntity<>(productService.getProductByIdWithList(idList),
                 HttpStatus.OK);
     }
+
+    //5. 제품 재고금액이 높은 상위 10개 제품(shot가 편하겠죠?)
+    //(재고금액 = 단가(unitPrice) * 재고수량(imventory))
+    @GetMapping("/products/inventoryprice/{limit}")
+    public ResponseEntity<List<Product>> getProductByInventoryPrice(@PathVariable int limit) {
+        return new ResponseEntity<>(productService.getProductByInventoryPrice(limit),
+                HttpStatus.OK);
+    }
 }

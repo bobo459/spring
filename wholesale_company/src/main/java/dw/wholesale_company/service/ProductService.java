@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import javax.print.attribute.standard.OrientationRequested;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -94,10 +95,25 @@ public class ProductService {
 
     //5. 제품 재고금액이 높은 상위 10개 제품(shot가 편하겠죠?)
     //(재고금액 = 단가(unitPrice) * 재고수량(imventory))
-    public List<Product> getProductByLanKing(int unitPrice, int inventory){
-        List<Product>  productList = productRepository.findAll();
-        return productList.stream().filter(
-                product -> product.getUnitPrice() =unitPrice
-
+    public List<Product> getProductByInventoryPrice(int limit){
+        List<Product> productList = productRepository.findAll();
+        return productList.stream().sorted(Comparator.comparingLong(  //comparingLong 이 model 안에 product의 UnitPrice의 타입이 int가 아닌 long이므로 comparingLong으로 사용. int면 comparingInt를 사용
+                        (Product p)-> p.getUnitPrice() * p.getInventory()).reversed())
+                .limit(limit)
+                .collect(Collectors.toList());
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
