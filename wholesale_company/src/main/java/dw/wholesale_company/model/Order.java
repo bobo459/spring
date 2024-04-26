@@ -23,7 +23,7 @@ public class Order {
 
     @ManyToOne
     @JoinColumn(name="고객번호")
-    private Customer customer;  //Customer 이클래스에서 불러올것이다. customerObj 붙이는게 일반적이다.
+    private Customer customer;  //Customer 이클래스에서 불러올것이다. customerObj 붙이는게 일반적이다. => 변수명을 coustomerId라고 적으면 나중에 Id만 기억에 남아서 헷갈릴수 있으므로 피해가자.
     @ManyToOne
     @JoinColumn(name="사원번호")
     private Employee employee;
