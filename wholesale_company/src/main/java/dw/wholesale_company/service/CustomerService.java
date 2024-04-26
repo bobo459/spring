@@ -1,6 +1,7 @@
 package dw.wholesale_company.service;
 
 
+import dw.wholesale_company.exception.ResourceNotFoundException;
 import dw.wholesale_company.model.Customer;
 import dw.wholesale_company.model.Mileage;
 import dw.wholesale_company.model.Product;
@@ -8,8 +9,10 @@ import dw.wholesale_company.repository.CustomerRepository;
 import dw.wholesale_company.repository.MileageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.ResourceAccessException;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -40,26 +43,14 @@ public class CustomerService {
 
     //6. 마일리지 등급명별로 고객수를 보이시오.
     public List<Customer> getCustomerByMileageGrade(String grade){
+        Optional<Mileage> mileageOptional = mileageRepository.findById(grade); //findById : Id를 찾거나 기본키를 찾는 기능
+     if (mileageOptional.isEmpty()){
+         throw new ResourceNotFoundException("Mileage", "Grade", grade);
+     }
         List<Customer> customerList = customerRepository.findAll();
-        List<Mileage> mileageList = mileageRepository.findAll();
-        long d = 0;
-        long c = 0;
-        long b = 0;
-        long a = 0;
-        long s = 0;
-        for (int i = 0; i < customerList.size(); i++) {
-            if (customerList.get(i).getMileage()>0&& 99>customerList.get(i).getMileage()){
-                d = d + 1;
-            } else if (customerList.get(i).getMileage()>100&& 999>customerList.get(i).getMileage()) {
-                c = c + 1;
-            }else if (customerList.get(i).getMileage()>1000&& 9999>customerList.get(i).getMileage()) {
-                b = b + 1;
-            }else if (customerList.get(i).getMileage()>10000&& 99999>customerList.get(i).getMileage()) {
-                a = a + 1;
-            }else if (customerList.get(i).getMileage()>100000&& 999999>customerList.get(i).getMileage()) {
-                s = s + 1;
-            }
-        }return customerList.stream().filter(m->mileageList.getClass().contains(grade)).collect(Collectors.toList());
+     return customerList.stream().filter(customer -> customer.getMileage() >= mileageOptional.get().getLowLimit()
+     && customer.getMileage() >=mileageOptional.get().getHighLimit())
+             .collect(Collectors.toList());
     }
 
 }
