@@ -29,6 +29,7 @@ public class SecurityConfig {
                 .authorizeRequests(auth -> auth
                         .requestMatchers( //허용할 주소지를 다 적어줘야한다. 개발중에는 **개 넣고 다 열린상태로 개발하고 나중에 닫아주기
                                 //인증이 필요없는 페이지를 만들어준것.
+                                new AntPathRequestMatcher("/products/**"),
                                 new AntPathRequestMatcher("/user/login"),  // "/user/*" 유저까지만 허용해줄게."/user/**" 유저의 자식들까지 허용하겠다
                                 new AntPathRequestMatcher("/user/signup"),
                                 new AntPathRequestMatcher("/login")  //스택틱 페이지
