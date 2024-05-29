@@ -1,7 +1,13 @@
 const urlLogin ="http://localhost:8080/user/login";
 const urlLogout ="http://localhost:8080/user/logout";
+const urlSignup ="http://localhost:8080/user/signup";
 let userId = "";
 let password = "";
+
+let signupUserId = "";
+let signupPassword = "";
+let signupUserName = "";
+let signupUserEmail = "";
 
 document.querySelector("#userId").addEventListener("change",(e)=>{
   console.log(e.target.value);
@@ -27,6 +33,45 @@ document.querySelector(".loginBtn").addEventListener("click",()=>{
     console.log("에러 발생 : ", error);
   })
 });
+
+
+//회원가입-과제
+document.querySelector(".signupBtn").addEventListener("click",()=>{
+  document.querySelector(".login-box").classList.add("hidden");
+  document.querySelector(".signup-box").classList.remove("hidden");
+})
+//회원가입 아이디
+document,querySelector("#signupUserId").addEventListener("change",(e)=>{
+  console.log(e.target.value);
+  signupUserId = e.target.value;
+})
+//회원가입 비번
+document,querySelector("#signupUserId").addEventListener("change",(e)=>{
+  console.log(e.target.value);
+  signupUserId = e.target.value;
+})
+
+document.querySelector(".signupBtn").addEventListener("click",()=>{
+  const data ={
+    userId : signupUserId,
+    password: password,
+  }
+  axios
+  //.post(url, 객체)
+  .post(urlLogin, data,{withCredentials: true})
+  .then((response)=>{
+    console.log("데이터: ",response);
+    sessionCurrent();
+  })
+  .catch((error)=>{
+    console.log("에러 발생 : ", error);
+  })
+});
+
+
+
+
+
 function sessionCurrent(){ //로그인유지확인하는것
   axios
   .get("http://localhost:8080/user/current",{withCredentials: true})
@@ -63,6 +108,7 @@ document.querySelector(".logoutBtn").addEventListener("click",()=>{
     })
   }
 })
+
 
 //js 파일이 로드 될때 호출됨.
 sessionCurrent();
