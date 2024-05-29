@@ -46,15 +46,15 @@ document,querySelector("#signupUserId").addEventListener("change",(e)=>{
   signupUserId = e.target.value;
 })
 //회원가입 비번
-document,querySelector("#signupUserId").addEventListener("change",(e)=>{
+document,querySelector("#signupPassword").addEventListener("change",(e)=>{
   console.log(e.target.value);
-  signupUserId = e.target.value;
+  signupPassword = e.target.value;
 })
 
 document.querySelector(".signupBtn").addEventListener("click",()=>{
   const data ={
     userId : signupUserId,
-    password: password,
+    password: signupPassword,
   }
   axios
   //.post(url, 객체)
