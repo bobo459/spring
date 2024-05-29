@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>JONYE STYLISH, 존재만으로 예쁜 너♥</title>
+    <link rel="stylesheet" href="css/common.css">
+    <script src="js/jquery-1.12.3.js"></script>
+    <script src="js/common.js"></script>
+</head>
+<body>
+    <div class="popup">
+        <h2>후기 적립금 안내</h2>
+        <p>
+            #적립금 챙겨가세요!<br>
+            #후기만 남겨도 적립금 빵빵!<br>
+            <br>
+            회원님들의 구매 후 솔직한 의견을<br>
+            남겨주시는 구매후기 입니다. 구매하신<br>
+            상품을 착용하시고 사진을 찍어 구매후기<br>
+            를 작성해 주시기 바랍니다.<br>
+            <br>
+            - 적립금은 작성 후 2~7일 이내 지급<br>
+            - 의도적인 비방글, 도배, 욕설등은 사전<br>
+            &nbsp; 공지없이 자동 삭제되며 형법 규정에 따<br>
+            &nbsp; 라 형사처벌을 받으실 수 있습니다.<br>
+        </p>
+        <a href="#">닫기X</a>
+    </div>
+    <div class="header">
+        <div class="wrap">
+            <h1>
+                <a href="#">
+                    <img src="images/header_logo.png" alt="존예로고">
+                </a>
+            </h1>
+            <div class="gnb">
+                <ul>
+                    <li>
+                        <a href="#" class="mainnav">OUTWEAR</a>
+                        <ul class="subnav">
+                            <li><a href="#">가디건</a></li>
+                            <li><a href="#">자켓</a></li>
+                            <li><a href="#">코트</a></li>
+                            <li><a href="#">점퍼</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="mainnav">TOP</a>
+                        <ul class="subnav">
+                            <li><a href="#">블라우스</a></li>
+                            <li><a href="#">셔츠</a></li>
+                            <li><a href="#">티셔츠</a></li>
+                            <li><a href="#">니트</a></li>
+                    </li>
+                    <li>
+                        <a href="#" class="mainnav">BOTTOM</a>
+                        <ul class="subnav">
+                            <li><a href="#">청바지</a></li>
+                            <li><a href="#">짧은바지</a></li>
+                            <li><a href="#">긴바지</a></li>
+                            <li><a href="#">레깅스</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="mainnav">SHOES</a>
+                        <ul class="subnav">
+                            <li><a href="#">샌달</a></li>
+                            <li><a href="#">플랫슈즈</a></li>
+                            <li><a href="#">로퍼</a></li>
+                            <li><a href="#">워커/부츠</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <ul>
+            <li><a href="#"><img src="images/main01.png" alt="메인이미지01"></a></li>
+            <li><a href="#"><img src="images/main02.png" alt="메인이미지02"></a></li>
+            <li><a href="#"><img src="images/main03.png" alt="메인이미지03"></a></li>
+        </ul>
+    </div>
+    <div class="tab">
+        <ul class="btn">
+            <li class="first"><a href="#tab01" class="active">BEST ITEM</a></li>
+            <li><a href="#tab02">NEW ARRIVALS</a></li>
+        </ul>
+        <div class="bwrap">
+            <div class="best">
+                <ul>
+                    <li>
+                        <a href="#">
+                            <img src="images/best01.png" alt="베스트이미지01">
+                            <P>포니 앞버튼 장식 속밴딩<br> 일자 보이핏 청바지</P>
+                            <del>42,000원</del>
+                            /
+                            <span class="price">32,800원</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="images/best02.png" alt="베스트이미지02">
+                            <P>벨리타 촉감좋은 소프트<br> 베이직 기모 폴라티</P>
+                            <del>19,000원</del>
+                            /
+                            <span class="price">14,800원</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="images/best03.png" alt="베스트이미지03">
+                            <P>루시 도톰한 베이직 꽈배기<br> 퐁퐁 니트 가디건</P>
+                            <del>32,000원</del>
+                            /
+                            <span class="price">25,900원</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="images/best04.png" alt="베스트이미지04">
+                            <P>루시 도톰한 베이직 꽈배기<br> 퐁퐁 니트 가디건</P>
+                            <del>29,000원</del>
+                            /
+                            <span class="price">24,800원</span>
+                        </a>
+                    </li>
+                    <li class="last">
+                        <a href="#">
+                            <img src="images/best05.png" alt="베스트이미지05">
+                            <P>리사 소매금장버튼 스트라이프<br> 단가라 울 니트 티셔츠</P>
+                            <del>35,000원</del>
+                            /
+                            <span class="price">27,500원</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="new">
+                <ul>
+                    <li>
+                        <a href="#">
+                            <img src="images/new01.png" alt="신상이미지01">
+                            <P>브리즈 데님 청 나시 뷔스티에<br> 포켓 롱 원피스</P>
+                            <del>34,000원</del>
+                            /
+                            <span class="price">24,800원</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="images/new02.png" alt="신상이미지02">
+                            <P>베이직 빅사이즈 기본 레이<br> 어드 화이트 롱 티셔츠 흰티</P>
+                            <del>18,000원</del>
+                            /
+                            <span class="price">8,500원</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="images/new03.png" alt="신상이미지03">
+                            <P>핑크 면 일자 보이핏 데님 진<br> 워싱 피그팬츠</P>
+                            <del>36,000원</del>
+                            /
+                            <span class="price">29,800원</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="images/new04.png" alt="신상이미지04">
+                            <P>아벨 앞단추 브이넥 셔링<br> 스트롱 롱 원피스</P>
+                            <del>29,000원</del>
+                            /
+                            <span class="price">23,800원</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="last">
+                            <img src="images/new05.png" alt="신상이미지05">
+                            <P>발랑스 여성 기본 긴팔 단가라<br> 스트라이프 티셔츠</P>
+                            <del>12,000원</del>
+                            /
+                            <span class="price">7,900원</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="contents">
+        <div class="notice">
+            <h2>공지사항</h2>
+            <ul>
+                <li><a href="#" class="popupOpen">. 후기 적립금 안내</a><span class="date">2020.11.20</span></li>
+                <li><a href="#">. 여름재고 시즌 OFF세일 65%할인</a><span class="date">2020.11.19</span></li>
+                <li><a href="#">. 교환 및 반품 Q&amp;A</a><span class="date">2020.11.18</span></li>
+                <li><a href="#">. 2030 러블리 여성의류, 존재만으로 예쁜 너</a><span class="date">2020.11.17</span></li>
+                <li><a href="#">. XX택배 파업관련 발송 대책 공지</a><span class="date">2020.11.16</span></li>
+            </ul>
+        </div>
+        <div class="banner">
+            <a href="#"><img src="images/banner.png" alt="카드배너"></a>
+        </div>
+        <div class="now">
+            <a href="#"></a><img src="images/now.png" alt="샵 바로가기"></a>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="wrap">
+            <h1><a href="#"><img src="images/footer_logo.png" alt="존예 로고"></a></h1>
+            <p>Copyright ⓒ JONYESTYLISH . All rights reserved.</p>
+            <div class="snsnav">
+                <ul>
+                    <li><a href="#">FACEBOOK</a></li>
+                    <li><a href="#">INSTAGRAM</a></li>
+                    <li class="last"><a href="#">TWITTER</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

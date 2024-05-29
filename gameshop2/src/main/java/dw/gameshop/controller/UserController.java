@@ -4,6 +4,7 @@ import dw.gameshop.dto.UserDto;
 import dw.gameshop.service.UserDetailService;
 import dw.gameshop.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -54,6 +55,18 @@ public class UserController {
 
         return ResponseEntity.ok("Success");  //실패시 예외처리
     }
+
+    @PostMapping("/logout")
+    public String logout(HttpServletRequest request, HttpServletResponse response){ //request 클라이언트에서 ,response 서버(톰켓?)에서 불러오는것.
+        HttpSession session =  request.getSession(false);
+        if (session != null){
+            session.invalidate();
+        }
+        return "You have been loggen out";
+    }
+
+
+
 
     @GetMapping("current")
     public String getCurrentUser() { //현재 섹션의 주인을 알고 싶을때사용.

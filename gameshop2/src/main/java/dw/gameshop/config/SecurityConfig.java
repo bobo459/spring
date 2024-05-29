@@ -32,7 +32,11 @@ public class SecurityConfig {
                                 new AntPathRequestMatcher("/products/**"),
                                 new AntPathRequestMatcher("/user/login"),  // "/user/*" 유저까지만 허용해줄게."/user/**" 유저의 자식들까지 허용하겠다
                                 new AntPathRequestMatcher("/user/signup"),
-                                new AntPathRequestMatcher("/login")  //스택틱 페이지
+                                new AntPathRequestMatcher("/login"),  //스택틱 페이지
+                                new AntPathRequestMatcher("/gameshop/**"), //게임샵의 모든것을 인증허용
+                                new AntPathRequestMatcher("/css/**"),
+                                new AntPathRequestMatcher("/js/**")
+
                         ).permitAll()  //permitAll() : 모두허용하겠다
                         .anyRequest().authenticated()) //어떠한 요청이든 모두 인증 받겠다.
                 .formLogin(form->form.loginPage("/login").defaultSuccessUrl("/articles"))  //formLogin : 정적로그인 페이지가 존재할 경우사용 ,
