@@ -58,4 +58,43 @@ function displaySingleProducts(data){ //필수로 알아야하는 기본구간(�
   game.appendChild(img);
   game.appendChild(lowBox);
   product.appendChild(game);
+
+  document.querySelector(".cartBtn").addEventListener("click",()=>{
+    sessionCurrent();
+  });
 }
+
+
+
+function sessionCurrent(data) {
+  axios
+  .get("http://localhost:8080/user/current", {withCredentials : true})
+  .then((response)=>{
+    console.log("데이터:",response.data);
+    if(response.status == 200){
+      const userId = response.data;
+      let cartItems = JSON.parse(localStorage.getItem(userId));
+      if(!cartItems){
+        cartItems=[];
+      }
+      cartItems.puth(data);
+      localStorage.setItem(userId, JSON.stringify(cartItems));
+    }
+  })
+  .catch((error)=>{
+    console.log("에러 발생:", error);
+    alert("로그인해주세요.");
+  });
+}
+// < 로컬 스토리지 사용법 >
+// 읽기
+// localStorage.getItem(키);
+
+// 쓰기
+// localStorage.setItem(키, 값);
+
+// JSON 형태로 저장하기
+// localStorage.setItem(키, JSON.stringify(값));
+
+// JSON 을 객체형태로 변환해서 읽기
+// JSON.parse(localStorage.getItem(키));

@@ -77,7 +77,26 @@ document.querySelector(".signupBtnIn").addEventListener("click",()=>{
     console.log("에러 발생 : ", error);
   })
   }
+
+  axios
+  .get("http://localhost:8080/user/signup",{withCredentials: true})
+  .then((response)=>{
+    console.log("데이터 : ",response);
+    if(response.status == 200){
+      console.log("세션 유지");
+      if(response.status == 200){
+        document.querySelector(".login-box").classList.add("hidden");
+        document.querySelector(".user-box").classList.remove("hidden");
+        document.querySelector(".user-box p").textContent
+        = "로그인해주세요." 
+      }
+    }
+  })
+
+
 });
+
+
 
 
 

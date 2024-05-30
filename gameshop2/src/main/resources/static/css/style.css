@@ -181,8 +181,28 @@
   font-size: 1.3rem;
   border-radius: 5px;
 }
+.low-box{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 8fr 2fr;
+  align-items: center;
+  
+}
+.cartBtn{
+  width: 100px;
+  height: 40px;
+  background-color: dodgerblue;
+  color: white;
+  font-weight: 700;
+  text-align: center;
+  line-height: 35px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: auto;
+}
 
-.hidden{
+/* hidden 클래스 스타일은 파일의 제일 아래에 놓자!! */
+.hidden{ 
   display: none;
 }
 
