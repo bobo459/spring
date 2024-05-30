@@ -60,7 +60,7 @@ function displaySingleProducts(data){ //필수로 알아야하는 기본구간(�
   product.appendChild(game);
 
   document.querySelector(".cartBtn").addEventListener("click",()=>{
-    sessionCurrent();
+    sessionCurrent(data);
   });
 }
 
@@ -77,7 +77,7 @@ function sessionCurrent(data) {
       if(!cartItems){
         cartItems=[];
       }
-      cartItems.puth(data);
+      cartItems.push(data);
       localStorage.setItem(userId, JSON.stringify(cartItems));
     }
   })
