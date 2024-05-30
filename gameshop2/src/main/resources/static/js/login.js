@@ -21,7 +21,7 @@ document.querySelector(".loginBtn").addEventListener("click",()=>{
   const data ={
     userId : userId,
     password: password,
-  }
+  };
   axios
   //.post(url, 객체)
   .post(urlLogin, data,{withCredentials: true})
@@ -41,32 +41,44 @@ document.querySelector(".signupBtn").addEventListener("click",()=>{
   document.querySelector(".signup-box").classList.remove("hidden");
 })
 //회원가입 아이디
-document,querySelector("#signupUserId").addEventListener("change",(e)=>{
+document.querySelector("#signupUserId").addEventListener("change",(e)=>{
   console.log(e.target.value);
   signupUserId = e.target.value;
 })
 //회원가입 비번
-document,querySelector("#signupPassword").addEventListener("change",(e)=>{
+document.querySelector("#signupPassword").addEventListener("change",(e)=>{
   console.log(e.target.value);
   signupPassword = e.target.value;
 })
-
-document.querySelector(".signupBtn").addEventListener("click",()=>{
+//회원가입 이름
+document.querySelector("#signupUserName").addEventListener("change",(e)=>{
+  console.log(e.target.value);
+  signupUserName = e.target.value;
+})
+//회원가입 이메일
+document.querySelector("#signupUserEmail").addEventListener("change",(e)=>{
+  console.log(e.target.value);
+  signupUserEmail = e.target.value;
+})
+document.querySelector(".signupBtnIn").addEventListener("click",()=>{
   const data ={
     userId : signupUserId,
     password: signupPassword,
+    userName: signupUserName,
+    userEmail: signupUserEmail,
   }
+  if(confirm("회원가입 하시겠습니까?")){
   axios
-  //.post(url, 객체)
-  .post(urlLogin, data,{withCredentials: true})
+  .post(urlSignup, data,{withCredentials: true})
   .then((response)=>{
     console.log("데이터: ",response);
-    sessionCurrent();
   })
   .catch((error)=>{
     console.log("에러 발생 : ", error);
   })
+  }
 });
+
 
 
 
@@ -108,7 +120,6 @@ document.querySelector(".logoutBtn").addEventListener("click",()=>{
     })
   }
 })
-
 
 //js 파일이 로드 될때 호출됨.
 sessionCurrent();

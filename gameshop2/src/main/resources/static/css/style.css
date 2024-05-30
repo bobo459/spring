@@ -113,6 +113,7 @@
   font-size: 1.3rem;
   border-radius: 5px;
 }
+
 .loginBtn{
   width: 100px;
   height: 40px;
@@ -124,11 +125,6 @@
   border-radius: 5px;
   cursor: pointer;
 }
-.loginBtn:hover{
-  background-color: lightblue;
-  color: dodgerblue;
-}
-
 .logoutBtn{
   width: 100px;
   height: 40px;
@@ -141,6 +137,23 @@
   cursor: pointer;
   margin-top: 30px;
 }
+.purchaseBtn{
+  width: 100px;
+  height: 40px;
+  background-color: dodgerblue;
+  color: white;
+  font-weight: 700;
+  text-align: center;
+  line-height: 35px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 50px;
+}
+
+.loginBtn:hover,.logoutBtn:hover,.purchaseBtn:hover{
+  background-color: lightblue;
+  color: dodgerblue;
+}
 
 .user-box{
   width: 450px;
@@ -151,12 +164,13 @@
   font-size: 1.5rem;
   border-radius: 5px;
 }
-.hidden{
-  display: none;
-}
+
 
 .signup-box{
   width: 450px;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  grid-template-rows: 1fr 1fr 1fr;
   justify-content: center;
   align-items: center;
   gap: 20px 0;
@@ -167,6 +181,10 @@
   font-size: 1.3rem;
   border-radius: 5px;
 }
-.signupBtn{
 
+.hidden{
+  display: none;
 }
+
+
+

@@ -16,27 +16,46 @@ axios
 
 function displaySingleProducts(data){ //필수로 알아야하는 기본구간(동적으로 만드는 구조)
   const product = document.querySelector(".product");
-  const game = document.createElement("div");
-  game.classList.add("game");
-  const img = document.createElement("img");
-  img.src = data.image;
-  img.classList.add("image");
-  game.appendChild(img);
 
+  //태크 요소 생성
+  const game = document.createElement("div");
+  const img = document.createElement("img");
   const title = document.createElement("p");
   const genre = document.createElement("p");
   const price = document.createElement("p");
   const text = document.createElement("p");
+  const lowBox = document.createElement("div");
+  const left = document.createElement("div");
+  const right = document.createElement("div");
+  const carBtn = document.createElement("div");
+
+  //클래스 이름 생성
+  img.src = data.image;
+  game.classList.add("game");
+  img.classList.add("image");
+  lowBox.classList.add("low-box");
+  carBtn.classList.add("cartBtn");
+  
+  //태그속성 추가
+  img.src = data.image;
   title.textContent = "게임 타이틀 : "+ data.title;
   genre.textContent = "게임 장르 : " +data.genre;
   price.textContent = "게임 가격 : " + data.price + "원";
   text.textContent = data.text;
-  game.appendChild(title);
-  game.appendChild(genre);
-  game.appendChild(price);
-  game.appendChild(text);
-game.style.setProperty("box-shadow", "initial", "important")
-game.style.setProperty("transform", "initial", "important")
-game.style.setProperty("cursor", "initial", "important")
+  game.style.setProperty("box-shadow", "initial", "important")
+  game.style.setProperty("transform", "initial", "important")
+  game.style.setProperty("cursor", "initial", "important")
+  carBtn.textContent = "장바구니 담기";
+
+  //appendChild 부모자식 위치 설정
+  right.appendChild(carBtn);
+  left.appendChild(title);
+  left.appendChild(genre);
+  left.appendChild(price);
+  left.appendChild(text);
+  lowBox.appendChild(left);
+  lowBox.appendChild(right);
+  game.appendChild(img);
+  game.appendChild(lowBox);
   product.appendChild(game);
 }
