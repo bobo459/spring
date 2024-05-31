@@ -90,6 +90,7 @@ document.querySelector(".signupBtnIn").addEventListener("click",()=>{
 
 
 
+
 function sessionCurrent(){ //로그인유지확인하는것
   axios
   .get("http://localhost:8080/user/current",{withCredentials: true})
