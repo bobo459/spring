@@ -1,5 +1,6 @@
 package dw.gameshop.controller;
 
+import dw.gameshop.dto.SessionDto;
 import dw.gameshop.dto.UserDto;
 import dw.gameshop.service.UserDetailService;
 import dw.gameshop.service.UserService;
@@ -69,11 +70,15 @@ public class UserController {
 
 
     @GetMapping("current")
-    public String getCurrentUser() { //현재 섹션의 주인을 알고 싶을때사용.
+    public SessionDto getCurrentUser() { //현재 섹션의 주인을 알고 싶을때사용.
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication == null || !authentication.isAuthenticated()) {
             throw new IllegalStateException("User is not authenticated");
         }
-        return authentication.getName();  //실패시 무명씨~ or 아무개씨~ or홍길동씨~ 라고 없는 이름이 나온다.
+        // return authentication.getName();  //실패시 무명씨~ or 아무개씨~ or홍길동씨~ 라고 없는 이름이 나온다.
+        SessionDto sessionDto = new SessionDto();
+        sessionDto.setUserId(authentication.getName());
+        sessionDto.setAuthority(authentication.getAuthorities());
+        return sessionDto;
     }
 }

@@ -101,7 +101,9 @@ function sessionCurrent(){ //로그인유지확인하는것
         document.querySelector(".login-box").classList.add("hidden");
         document.querySelector(".user-box").classList.remove("hidden");
         document.querySelector(".user-box p").textContent
-        = response.data +"님, 환영합니다." 
+        = response.data.userId +"님, 환영합니다." 
+        //= response.data +"님, 환영합니다." 
+        
       }
     }
   })

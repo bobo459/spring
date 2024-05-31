@@ -1,6 +1,7 @@
 package dw.gameshop.service;
 
 import dw.gameshop.dto.UserDto;
+import dw.gameshop.model.Authority;
 import dw.gameshop.model.User;
 import dw.gameshop.repository.UserRepository;
 import jakarta.transaction.Transactional;
@@ -21,11 +22,15 @@ public class UserService {
     }
 
     public String saveUser(UserDto userDto) {
+        Authority authority = new Authority();
+        authority.setAuthorityName("ROLE_USER");
         User user = new User(userDto.getUserId(),
                 userDto.getUserName(),
                 userDto.getUserEmail(),
                 bCryptPasswordEncoder.encode(userDto.getPassword()),  //비번 또는 민증번호, 카드번호 등 개인정보 저장시점에 패스워드로 암호화 시켜준다.
+                authority,
                 LocalDateTime.now());
         return userRepository.save(user).getUserId();
+
     }
 }

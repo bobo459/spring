@@ -140,6 +140,7 @@
 .purchaseBtn{
   width: 100px;
   height: 40px;
+  display: inline-block;
   background-color: dodgerblue;
   color: white;
   font-weight: 700;
@@ -147,7 +148,9 @@
   line-height: 35px;
   border-radius: 5px;
   cursor: pointer;
+  
   margin: 50px;
+
 }
 
 .loginBtn:hover,.logoutBtn:hover,.purchaseBtn:hover{
@@ -165,7 +168,7 @@
   border-radius: 5px;
 }
 
-
+/* 회원가입-과제 */
 .signup-box{
   width: 450px;
   display: grid;
@@ -188,6 +191,8 @@
   align-items: center;
   
 }
+
+
 .cartBtn{
   width: 100px;
   height: 40px;
@@ -199,6 +204,34 @@
   border-radius: 5px;
   cursor: pointer;
   margin: auto;
+}
+.cart{
+  width: 100%;
+  background-color: khaki;
+  padding: 20px;
+}
+.cart-table{
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 5px;
+  overflow: hidden;  /* 스크롤바를 안보이게 만들어주는것 */
+  background-color: white;
+}
+.cart-table td{
+  text-align: center;
+}
+thead{  /* 태그여서  . 이 있으면 안된다.  */
+  background-color: #27ae60;
+  height: 50px;
+}
+.tr:nth-child(even) td{   /* even:테이블의 짝수마다 색을 변경한다. odd는 테이블의 홀수 마다 색을 변경 */
+  background-color: #eaeaed;
+}
+.imgtd{
+  width: 200px;
+}
+.totalprice{
+  display: inline-block;
 }
 
 /* hidden 클래스 스타일은 파일의 제일 아래에 놓자!! */
