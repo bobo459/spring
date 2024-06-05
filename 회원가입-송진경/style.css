@@ -1,0 +1,210 @@
+@font-face {
+  font-family: 'GmarketSansMedium';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Poppins,GmarketSansMedium;
+  text-decoration: none;
+  color: inherit;
+}
+.container{
+  width: 70%; /* 컴퓨터는 화면이 크기때문에 70% 사용. 모바일은 짧기 때문에 브라우저인 경우에 80~90%까지 사용한다. */
+  margin: 0 auto;
+  border: 1px solid black;
+}
+.title{
+  width: 100%;
+  height: 150px;
+  background-color: lightblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  color: dodgerblue;
+}
+.menu{
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  background-color: dodgerblue;
+}
+.content{
+  width: 100%;
+  padding: 20px;
+  background-color: khaki;
+  display : grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  padding: 20px;
+}
+.footer{
+  width: 100%;
+  height: 100px;
+  background-color: lightblue;
+  padding: 20px;
+}
+.menu > div{ /* 책에 10장에 나오는 고급선택자 [부모>자식]*/
+  width: 120px;
+  height: 50px;
+  text-align: center;
+  line-height: 45px;  /* 텍스트한테만 사용가능. 텍스트의 줄간격 */
+  color: white;
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+.menu > div:hover {
+  color: dodgerblue;
+  background-color: white;
+  cursor: pointer;
+}
+ .game{ /*호버가 아닐때 */
+  /* width: 200px;
+  height: 200px; */
+  /* border: 1px solid black; */
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+  padding-bottom: 20px;
+}
+.game:hover{ /*호버 일때 */
+  box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.4);
+  transform: translate(0px, -5px);
+  cursor: pointer;
+}
+.image{
+  width: 100%;
+}
+.content p{
+  margin: 0 0 5px 10px;
+}
+.product{
+  width: 100%;
+  background-color: khaki;
+  padding: 20px;
+}
+.product p {
+  margin: 10px 20px;
+}
+.login{
+  height: 300px;
+  background-color: khaki;
+  display: flex;
+  align-items: center;
+}
+.login-box{
+  width: 450px;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  grid-template-rows: 1fr 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  gap: 20px 0;
+  margin-left: 30px;
+  padding: 30px;
+  background-color: white;
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+  font-size: 1.3rem;
+  border-radius: 5px;
+}
+
+.loginBtn{
+  width: 100px;
+  height: 40px;
+  background-color: dodgerblue;
+  color: white;
+  font-weight: 700;
+  text-align: center;
+  line-height: 35px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.logoutBtn{
+  width: 100px;
+  height: 40px;
+  background-color: dodgerblue;
+  color: white;
+  font-weight: 700;
+  text-align: center;
+  line-height: 35px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 30px;
+}
+.purchaseBtn{
+  width: 100px;
+  height: 40px;
+  background-color: dodgerblue;
+  color: white;
+  font-weight: 700;
+  text-align: center;
+  line-height: 35px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 50px;
+}
+
+.loginBtn:hover,.logoutBtn:hover,.purchaseBtn:hover{
+  background-color: lightblue;
+  color: dodgerblue;
+}
+
+.user-box{
+  width: 450px;
+  margin-left: 30px;
+  padding: 30px;
+  background-color: white;
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+  font-size: 1.5rem;
+  border-radius: 5px;
+}
+
+
+.signup-box{
+  width: 450px;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  grid-template-rows: 1fr 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  gap: 20px 0;
+  margin-left: 30px;
+  padding: 30px;
+  background-color: white;
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+  font-size: 1.3rem;
+  border-radius: 5px;
+}
+.low-box{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 8fr 2fr;
+  align-items: center;
+  
+}
+.cartBtn{
+  width: 100px;
+  height: 40px;
+  background-color: dodgerblue;
+  color: white;
+  font-weight: 700;
+  text-align: center;
+  line-height: 35px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: auto;
+}
+
+/* hidden 클래스 스타일은 파일의 제일 아래에 놓자!! */
+.hidden{ 
+  display: none;
+}
+
+
+
