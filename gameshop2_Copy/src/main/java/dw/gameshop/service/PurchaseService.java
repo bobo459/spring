@@ -1,5 +1,6 @@
 package dw.gameshop.service;
 
+import dw.gameshop.dto.PurchaseDto;
 import dw.gameshop.exception.ResourceNotFoundException;
 import dw.gameshop.model.Purchase;
 import dw.gameshop.model.User;
@@ -7,6 +8,8 @@ import dw.gameshop.repository.PurchaseRepository;
 import dw.gameshop.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -28,49 +31,59 @@ public class PurchaseService {
         return purchaseRepository.save(purchase);
     }
 
-    public List<Purchase> savePurchaseList(List<Purchase> purchaseList) {
-        //구매확정 바로 직전, 현재시간을 저장함
-   /*     for (int i = 0; i < purchaseList.size(); i++) {
-            purchaseList.get(i).setPurchaseTime(LocalDateTime.now());
-            purchaseRepository.save(purchaseList.get(i));
-        }
-        return purchaseList;*/
-        List<Purchase> savePurchaseList = purchaseList.stream()
-                .map((purchase)->{  //map 각배열,컬렉션을 반복실행
+    public List<PurchaseDto> savePurchaseList(List<Purchase> purchaseList) {
+        List<Purchase> savedPurchaseList = purchaseList.stream()
+                .map((purchase)->{
+                    //구매확정 바로 직전, 현재시간을 저장함
                     purchase.setPurchaseTime(LocalDateTime.now());
                     return purchaseRepository.save(purchase);
                 })
                 .collect(Collectors.toList());
-        return savePurchaseList;
+        return savedPurchaseList.stream().map((data)->PurchaseDto.toPurchaseDto(data))
+                .collect(Collectors.toList());
     }
 
-    public List<Purchase> getAllPurchases() {
-        return purchaseRepository.findAll();
+    public List<PurchaseDto> getAllPurchases() {
+        return purchaseRepository.findAll().stream().map((data)->PurchaseDto.toPurchaseDto(data))
+                .collect(Collectors.toList());
     }
 
-    public List<Purchase> getPurchaseListByUser(String userId) {
+    public List<PurchaseDto> getPurchaseListByUser(String userId) {
         // 유저아이디로 유저객체 찾기
         Optional<User> userOptional = userRepository.findByUserId(userId);
         if (userOptional.isEmpty()) {
-            throw new ResourceNotFoundException("User", "ID", userId);
+            throw new ResourceNotFoundException("해당 유저가 없습니다. ID : " + userId);
         }
-        return purchaseRepository.findByUser(userOptional.get());
+        return purchaseRepository.findByUser(userOptional.get()).stream()
+                .map((data)->PurchaseDto.toPurchaseDto(data))
+                .collect(Collectors.toList());
     }
 
     //유저 이름으로 구매한 게임 찾기
-    public List<Purchase> getPurchaseListByUserName(String userName) {
+    public List<PurchaseDto> getPurchaseListByUserName(String userName) {
         // 유저이름으로 유저객체 찾기
         Optional<User> userOptional = userRepository.findByUserName(userName);
         if (userOptional.isEmpty()) {
-            throw new ResourceNotFoundException("User", "Name", userName);
+            throw new ResourceNotFoundException("해당 유저 이름이 없습니다. : " + userName);
         }
-        return purchaseRepository.findByUser(userOptional.get());
+        return purchaseRepository.findByUser(userOptional.get()).stream()
+                .map((data)->PurchaseDto.toPurchaseDto(data))
+                .collect(Collectors.toList());
+    }
+
+    // 현재 세션 유저 이름으로 구매한 게임 찾기
+    public List<PurchaseDto> getPurchaseListByCurrentUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null || !authentication.isAuthenticated()) {
+            throw new IllegalStateException("User is not authenticated");
+        }
+        String userId = authentication.getName();
+        Optional<User> userOptional = userRepository.findByUserId(userId);
+        if (userOptional.isEmpty()) {
+            throw new ResourceNotFoundException("해당 유저가 없습니다. ID : " + userId);
+        }
+        return purchaseRepository.findByUser(userOptional.get()).stream()
+                .map((data)->PurchaseDto.toPurchaseDto(data))
+                .collect(Collectors.toList());
     }
 }
-
-
-
-
-
-
-
